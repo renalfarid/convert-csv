@@ -61,7 +61,7 @@ const readCsvFile = async (filePath: string, outputPath: string | null, estimate
 
         // Output the results
         console.log(`File name: ${filePath}`);
-        console.log(`Reading times: ${readingTime} seconds`);
+        console.log(`Processing times: ${readingTime} seconds`);
     } catch (error) {
         console.error('An error occurred:', error);
     }
@@ -74,6 +74,9 @@ const outputIndex = args.indexOf('--output');
 if (fileIndex !== -1 && fileIndex + 1 < args.length) {
     const filePath = args[fileIndex + 1];
     const outputPath = outputIndex !== -1 && outputIndex + 1 < args.length ? args[outputIndex + 1] : null;
+
+    console.log("Reading file...")
+    console.log("=================")
 
     evaluateFile(filePath)
         .then((estimatedTotalLines) => {
